@@ -1,14 +1,10 @@
-
-import 'package:chatrooms_app/screens/football.dart';
+import 'package:chatrooms_app/screens/chat.dart';
 import 'package:chatrooms_app/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../screens/paint.dart';
-import '../screens/coding.dart';
 import '../screens/welcome.dart';
-import '../screens/music.dart';
-import '../screens/photography.dart';
+
 
 
 class NavDrawer extends StatefulWidget {
@@ -20,17 +16,15 @@ class NavDrawer extends StatefulWidget {
 
 class _NavDrawerState extends State<NavDrawer> {
   @override
-  var uname='hello';
+  var uname;
   void initState() {
-    // TODO: implement initState
     super.initState();
-    //uname = UserSimplePreferences.getUname() ?? 'ok';
     loadCounter();
   }
   void loadCounter() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      uname = prefs.getString('userName') ?? 'ok';
+      uname = prefs.getString('userName');
     });
   }
   @override
@@ -51,7 +45,6 @@ class _NavDrawerState extends State<NavDrawer> {
                 leading: Icon(Icons.home,color: Colors.white,),
                 title: Text('Home',style: TextStyle(color: Colors.white),),
                   onTap: () {
-                    Navigator.of(context).pop();
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (_) {
                           return HomePage();
@@ -63,50 +56,45 @@ class _NavDrawerState extends State<NavDrawer> {
               leading: Icon(Icons.laptop_chromebook,color: Colors.white,),
               title: Text('Coding',style: TextStyle(color: Colors.white),),
               onTap: () {
-                Navigator.of(context).pop();
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                      return Coding(uname: uname,);
+                      return Chat(uname: uname, collName: 'Coding', roomName: 'Coding');
                     }));
               }),
           ListTile(
               leading: Icon(Icons.sports_basketball,color: Colors.white,),
               title: Text('Football',style: TextStyle(color: Colors.white),),
               onTap: () {
-                Navigator.of(context).pop();
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                  return FootBall(uname: uname,);
+                      return Chat(uname: uname, collName: 'Football', roomName: 'Football');
                 }));
               }),
           ListTile(
             leading: Icon(Icons.camera_alt,color: Colors.white,),
             title: Text('Photography',style: TextStyle(color: Colors.white),),
             onTap: () {
-              Navigator.of(context).pop();
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (_) {
-                    return Photography(uname: uname,);
+                    return Chat(uname: uname, collName: 'Photography', roomName: 'Photography');
                   }));
             }),
           ListTile(
               leading: Icon(Icons.music_note,color: Colors.white,),
-              title: Text('Music',style: TextStyle(color: Colors.white),),
+              title: Text('Dance',style: TextStyle(color: Colors.white),),
               onTap: () {
-                Navigator.of(context).pop();
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) {
-                  return music(uname: uname,);
+                      return Chat(uname: uname, collName: 'Dance', roomName: 'Dance');
                 }));
               }),
           ListTile(
             leading: Icon(Icons.draw,color: Colors.white,),
             title: Text('Art',style: TextStyle(color: Colors.white),),
             onTap: () {
-              Navigator.of(context).pop();
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (_) {
-                    return Arts(uname: uname,);
+                    return Chat(uname: uname, collName: 'Art', roomName: 'Art');
                   }));
             },
           ),
