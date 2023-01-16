@@ -1,5 +1,4 @@
 
-import 'package:chatrooms_app/shared/helper_function.dart';
 import 'package:chatrooms_app/screens/home.dart';
 import 'package:chatrooms_app/screens/welcome.dart';
 import 'package:flutter/material.dart';
@@ -24,4 +23,3 @@ Future<void> main() async {
     home: uname==null ?WelcomePage():HomePage(),));
 
 }
-
