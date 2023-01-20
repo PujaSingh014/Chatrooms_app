@@ -1,4 +1,4 @@
-# chatrooms_app
+# Chatrooms_app
 An app with different chatrooms available. User can create a valid username and then interact with each other. It contains a profanity filter which blocks messages containing profanity. Firebase Firestore is used to store and fetch messages.
 
 # Tech Stack
